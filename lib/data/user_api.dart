@@ -48,7 +48,7 @@ class UserData {
       email: firebaseData['email'] as String,
       id: firebaseData['id'] as String,
       name: firebaseData['name'] as String,
-      imageUrl: '',
+      imageUrl: firebaseData['picture']['data']['url'] as String,
     );
   }
 

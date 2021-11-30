@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 
+import 'data/movies_api.dart';
 import 'data/user_api.dart';
 import 'epics/app_epics.dart';
 import 'models/app_state.dart';
@@ -11,7 +12,8 @@ import 'reducer/reducer.dart';
 
 void main() {
   final UserData userData = UserData();
-  final AppEpics epics = AppEpics(userData);
+  final MoviesApi moviesApi = MoviesApi();
+  final AppEpics epics = AppEpics(userData, moviesApi);
 
   final Store<AppState> store = Store<AppState>(
     reducer,
@@ -37,14 +39,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreProvider(
+    return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
         title: 'Movie Time',
         theme: ThemeData.dark(),
-        home: const LoginPage(
-          title: 'Filimon Bogdan',
-        ),
+        home: const LoginPage(),
       ),
     );
   }

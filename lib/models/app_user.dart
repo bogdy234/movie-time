@@ -1,18 +1,18 @@
 class AppUser {
   AppUser({
-    required this.email,
     required this.id,
+    required this.email,
     required this.name,
     required this.imageUrl,
   });
 
   @override
   String toString() {
-    return 'AppUser{email: $email, id: $id, name: $name, imageUrl: $imageUrl}';
+    return 'AppUser{email: $id, id: $email, name: $name, imageUrl: $imageUrl}';
   }
 
-  final String email;
   final String id;
+  final String email;
   final String name;
   final String? imageUrl;
 }

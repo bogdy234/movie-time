@@ -3,14 +3,14 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 import '/constants/login_page.dart';
+import '../actions/get_movies.dart';
 import '../actions/get_user_data_with_token.dart';
 import '../actions/sign_in_with_facebook.dart';
 import '../models/app_state.dart';
+import 'discover_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -20,7 +20,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    print('here');
     final Store<AppState> store = StoreProvider.of<AppState>(
       context,
       listen: false,
@@ -29,23 +28,28 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void onGettingUserDataWithToken(dynamic action) {
-    final Store<AppState> store = StoreProvider.of<AppState>(context);
     if (action is GetUserDataWithTokenSuccessful) {
-      print(store.state.user);
+      Navigator.push<void>(
+        context,
+        MaterialPageRoute<HomePage>(
+          builder: (BuildContext context) => const HomePage(),
+        ),
+      );
+      final Store<AppState> store = StoreProvider.of<AppState>(
+        context,
+        listen: false,
+      );
+      store.dispatch(GetMovies(1));
     } else {
       print(action.error);
     }
   }
 
   void onResult(dynamic action) {
-    final Store<AppState> store = StoreProvider.of<AppState>(context);
-    print('here');
     if (action is SignInWithFacebookSuccessful) {
       print('still here');
-      print(store.state.user.toString());
     } else {
       print('hmm here');
-      print('${action.error}');
     }
   }
 
@@ -61,7 +65,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text(
+          Constants.LOGIN,
+        ),
         centerTitle: true,
       ),
       body: Center(

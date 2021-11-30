@@ -1,39 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_epics/redux_epics.dart';
+
+import 'data/user_api.dart';
+import 'epics/app_epics.dart';
+import 'models/app_state.dart';
+import 'presentation/login_page.dart';
+import 'reducer/reducer.dart';
 
 void main() {
-  runApp(const MyApp());
+  final UserData userData = UserData();
+  final AppEpics epics = AppEpics(userData);
+
+  final Store<AppState> store = Store<AppState>(
+    reducer,
+    initialState: AppState(),
+    middleware: <Middleware<AppState>>[
+      (Store<AppState> store, dynamic action, NextDispatcher next) {
+        next(action);
+        print(store.state);
+      },
+      EpicMiddleware<AppState>(epics.epics),
+    ],
+  );
+
+  runApp(MyApp(
+    store: store,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key, required this.store}) : super(key: key);
+
+  final Store<AppState> store;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Movie Time',
-      theme: ThemeData.dark(),
-      home: const MyHomePage(title: 'Movie Time Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+    return StoreProvider(
+      store: store,
+      child: MaterialApp(
+        title: 'Movie Time',
+        theme: ThemeData.dark(),
+        home: const LoginPage(
+          title: 'Filimon Bogdan',
+        ),
       ),
-      body: const Text('test'),
     );
   }
 }

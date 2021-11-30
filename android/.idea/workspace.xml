@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="08b16e50-9127-4a25-9c47-671f95db8bff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/actions/get_user_data_with_token.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/actions/logout.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/actions/sign_in_with_facebook.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/constants/login_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/container/user_container.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/data/movies_api.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/data/user_api.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/epics/app_epics.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/models/app_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/models/app_user.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/presentation/bottom_navigation_bar.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/presentation/discover_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/presentation/login_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/presentation/profile_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/reducer/reducer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/runConfigurations/main_dart.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../movie_time.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../movie_time.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../test/widget_test.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="21dWcz0gJQRPcYYAhpiMnoQufLr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08b16e50-9127-4a25-9c47-671f95db8bff" name="Default Changelist" comment="" />
+      <created>1638271530473</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638271530473</updated>
+    </task>
+    <servers />
+  </component>
+</project>

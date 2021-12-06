@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 
+import '../actions/add_movie_favorite.dart';
+import '../constants/constants.dart';
 import '../models/app_movie.dart';
+import '../models/app_state.dart';
 import 'icon_text.dart';
 
 class MoviePage extends StatelessWidget {
@@ -51,6 +56,18 @@ class MoviePage extends StatelessWidget {
                 child: Text(
                   movie.summary,
                   textAlign: TextAlign.center,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    final Store<AppState> store = StoreProvider.of<AppState>(context);
+                    store.dispatch(
+                      AddMovieFavorite(<AppMovie>[...store.state.user!.favoriteMovies, movie]),
+                    );
+                  },
+                  child: const Text(Constants.ADD_FAVORITES),
                 ),
               ),
             ],

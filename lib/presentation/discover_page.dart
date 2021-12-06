@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 import '../actions/get_movies.dart';
-import '../constants/login_page.dart';
+import '../constants/constants.dart';
 import '../container/is_loading_container.dart';
 import '../container/movies_container.dart';
 import '../models/app_movie.dart';

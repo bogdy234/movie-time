@@ -1,4 +1,5 @@
 // state + action => state
+import 'package:movie_time/actions/add_movie_favorite.dart';
 import 'package:redux/redux.dart';
 
 import '../actions/get_movies.dart';
@@ -13,9 +14,15 @@ Reducer<AppState> reducer = combineReducers<AppState>(<Reducer<AppState>>[
   TypedReducer<AppState, SignInWithFacebookSuccessful>(signInWithFacebookSuccessful),
   TypedReducer<AppState, GetUserDataWithTokenSuccessful>(getUserDataWithTokenSuccessful),
   TypedReducer<AppState, PressBottomBarOption>(pressBottomBarOption),
+  TypedReducer<AppState, Logout>(logout),
   TypedReducer<AppState, GetMovies>(getMovies),
   TypedReducer<AppState, GetMoviesSuccessful>(getMoviesSuccessful),
+  TypedReducer<AppState, AddMovieFavorite>(addMovieFavorite),
 ]);
+
+AppState addMovieFavorite(AppState state, AddMovieFavorite action) {
+  return state.copyWith(user: state.user!.copyWith(favoriteMovies: action.favoriteMovies));
+}
 
 AppState signInWithFacebookSuccessful(AppState state, SignInWithFacebookSuccessful action) {
   return state.copyWith(user: action.appUser);

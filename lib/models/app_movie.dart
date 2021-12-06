@@ -11,7 +11,7 @@ class AppMovie {
   final int id;
   final String title;
   final int year;
-  final num rating;
+  final double rating;
   final String summary;
   final String coverImageUrl;
 

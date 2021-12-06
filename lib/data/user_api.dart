@@ -13,14 +13,16 @@ class UserData {
     if (!(loginResult.status == LoginStatus.success)) {
       throw StateError('Error signing in with Facebook!');
     }
-
+    if (loginResult.accessToken == null) {
+      throw StateError('Error accessing Facebook token!');
+    }
     final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
     // Once signed in, return the UserCredential
     final UserCredential firebaseData = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    print('I dont think it arrives here');
     final User? user = firebaseData.user;
 
-    if (user == null) {
+    if (firebaseData == null || user == null) {
       throw StateError('Failed to login');
     }
 

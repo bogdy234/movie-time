@@ -27,7 +27,7 @@ class MoviesApi {
       final int id = movie['id'] as int;
       final String title = movie['title'] as String;
       final int year = movie['year'] as int;
-      final num rating = movie['rating'] as num;
+      final double rating = (movie['rating'] as num).toDouble();
       final String summary = movie['summary'] as String;
       final String coverImageUrl = movie['medium_cover_image'] as String;
 

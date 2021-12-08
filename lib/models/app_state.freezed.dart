@@ -45,20 +45,13 @@ mixin _$AppState {
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppStateCopyWith<AppState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AppStateCopyWith<AppState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AppStateCopyWith<$Res> {
-  factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
-      _$AppStateCopyWithImpl<$Res>;
-  $Res call(
-      {AppUser? user,
-      List<AppMovie> movies,
-      int bottomBarSelectedIndex,
-      int moviesPage,
-      bool isLoading});
+  factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) = _$AppStateCopyWithImpl<$Res>;
+  $Res call({AppUser? user, List<AppMovie> movies, int bottomBarSelectedIndex, int moviesPage, bool isLoading});
 
   $AppUserCopyWith<$Res>? get user;
 }
@@ -117,23 +110,16 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
 
 /// @nodoc
 abstract class $AppState$CopyWith<$Res> implements $AppStateCopyWith<$Res> {
-  factory $AppState$CopyWith(AppState$ value, $Res Function(AppState$) then) =
-      _$AppState$CopyWithImpl<$Res>;
+  factory $AppState$CopyWith(AppState$ value, $Res Function(AppState$) then) = _$AppState$CopyWithImpl<$Res>;
   @override
-  $Res call(
-      {AppUser? user,
-      List<AppMovie> movies,
-      int bottomBarSelectedIndex,
-      int moviesPage,
-      bool isLoading});
+  $Res call({AppUser? user, List<AppMovie> movies, int bottomBarSelectedIndex, int moviesPage, bool isLoading});
 
   @override
   $AppUserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
-class _$AppState$CopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
-    implements $AppState$CopyWith<$Res> {
+class _$AppState$CopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res> implements $AppState$CopyWith<$Res> {
   _$AppState$CopyWithImpl(AppState$ _value, $Res Function(AppState$) _then)
       : super(_value, (v) => _then(v as AppState$));
 
@@ -210,10 +196,8 @@ class _$AppState$ implements AppState$ {
             other is AppState$ &&
             const DeepCollectionEquality().equals(other.user, user) &&
             const DeepCollectionEquality().equals(other.movies, movies) &&
-            const DeepCollectionEquality()
-                .equals(other.bottomBarSelectedIndex, bottomBarSelectedIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.moviesPage, moviesPage) &&
+            const DeepCollectionEquality().equals(other.bottomBarSelectedIndex, bottomBarSelectedIndex) &&
+            const DeepCollectionEquality().equals(other.moviesPage, moviesPage) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading));
   }
 
@@ -228,17 +212,12 @@ class _$AppState$ implements AppState$ {
 
   @JsonKey(ignore: true)
   @override
-  $AppState$CopyWith<AppState$> get copyWith =>
-      _$AppState$CopyWithImpl<AppState$>(this, _$identity);
+  $AppState$CopyWith<AppState$> get copyWith => _$AppState$CopyWithImpl<AppState$>(this, _$identity);
 }
 
 abstract class AppState$ implements AppState {
   const factory AppState$(
-      {AppUser? user,
-      List<AppMovie> movies,
-      int bottomBarSelectedIndex,
-      int moviesPage,
-      bool isLoading}) = _$AppState$;
+      {AppUser? user, List<AppMovie> movies, int bottomBarSelectedIndex, int moviesPage, bool isLoading}) = _$AppState$;
 
   @override
   AppUser? get user;
@@ -252,6 +231,5 @@ abstract class AppState$ implements AppState {
   bool get isLoading;
   @override
   @JsonKey(ignore: true)
-  $AppState$CopyWith<AppState$> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AppState$CopyWith<AppState$> get copyWith => throw _privateConstructorUsedError;
 }

@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
         listen: false,
       );
-      store.dispatch(GetMovies(1));
+      store.dispatch(const GetMovies(1));
     }
   }
 

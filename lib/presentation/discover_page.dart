@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:movie_time/presentation/cover_image_list_tile.dart';
 import 'package:redux/redux.dart';
 
 import '../actions/get_movies.dart';
@@ -10,6 +9,7 @@ import '../container/movies_container.dart';
 import '../models/app_movie.dart';
 import '../models/app_state.dart';
 import 'bottom_navigation_bar.dart';
+import 'cover_image_list_tile.dart';
 import 'movie_page.dart';
 
 class HomePage extends StatefulWidget {

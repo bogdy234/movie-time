@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_time/constants/constants.dart';
+
+import '../constants/constants.dart';
 
 class CoverImageListTile extends StatelessWidget {
   const CoverImageListTile({Key? key, required this.coverImageUrl, required this.movieTitle}) : super(key: key);

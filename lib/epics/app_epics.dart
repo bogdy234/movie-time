@@ -22,7 +22,7 @@ class AppEpics {
       TypedEpic<AppState, GetUserDataWithToken>(getUserDataWithToken),
       TypedEpic<AppState, SignInWithFacebook>(signInWithFacebook),
       TypedEpic<AppState, Logout>(logout),
-      TypedEpic<AppState, GetMovies>(getMovies),
+      TypedEpic<AppState, GetMoviesStart>(getMovies),
     ]);
   }
 
@@ -60,10 +60,13 @@ class AppEpics {
             (Logout action) => Stream<void>.value(null).asyncMap((_) => userApi.logout()).doOnData(action.result));
   }
 
-  Stream<dynamic> getMovies(Stream<GetMovies> actions, EpicStore<AppState> store) {
+  Stream<GetMovies> getMovies(Stream<GetMoviesStart> actions, EpicStore<AppState> store) {
     return actions //
-        .asyncMap((_) => moviesApi.getMovies(store.state.moviesPage))
-        .map<Object>((List<AppMovie> appMovies) => GetMoviesSuccessful(appMovies))
-        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetMoviesError(error));
+        .asyncMap((GetMoviesStart action) => moviesApi.getMovies(
+              store.state.moviesPage,
+              searchParam: action.searchParam,
+            ))
+        .map<GetMovies>((List<AppMovie> appMovies) => GetMovies.successful(appMovies))
+        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetMovies.error(error, stackTrace));
   }
 }

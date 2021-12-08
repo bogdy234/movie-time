@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:movie_time/models/app_movie.dart';
 import 'package:redux/redux.dart';
 
 import '../actions/logout.dart';
 import '../constants/constants.dart';
 import '../container/user_container.dart';
+import '../models/app_movie.dart';
 import '../models/app_state.dart';
 import '../models/app_user.dart';
 import 'bottom_navigation_bar.dart';
+import 'cover_image_list_tile.dart';
 import 'login_page.dart';
+import 'movie_page.dart';
 import 'profile_image_text.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -65,15 +67,49 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: UserContainer(
         builder: (BuildContext context, AppUser? user) {
-          return GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemCount: user!.favoriteMovies.length,
-            itemBuilder: (BuildContext context, int index) {
-              final List<AppMovie> favoriteMovies = user.favoriteMovies;
-              return Text(favoriteMovies[index].title);
-            },
+          final List<AppMovie> favoriteMovies = user!.favoriteMovies;
+
+          return Column(
+            children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  Constants.FAVORITE_MOVIES,
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.75,
+                    mainAxisSpacing: Constants.SPACING_TILES,
+                    crossAxisSpacing: Constants.SPACING_TILES,
+                  ),
+                  itemCount: favoriteMovies.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<MoviePage>(
+                            builder: (BuildContext context) => MoviePage(
+                              movie: favoriteMovies[index],
+                            ),
+                          ),
+                        );
+                      },
+                      child: CoverImageListTile(
+                        coverImageUrl: favoriteMovies[index].coverImageUrl,
+                        movieTitle: favoriteMovies[index].title,
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),

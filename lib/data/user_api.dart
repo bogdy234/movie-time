@@ -19,7 +19,6 @@ class UserData {
     final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
     // Once signed in, return the UserCredential
     final UserCredential firebaseData = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-    print('I dont think it arrives here');
     final User? user = firebaseData.user;
 
     if (firebaseData == null || user == null) {

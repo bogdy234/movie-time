@@ -1,7 +1,7 @@
 // state + action => state
-import 'package:movie_time/actions/add_movie_favorite.dart';
 import 'package:redux/redux.dart';
 
+import '../actions/add_remove_movie_favorite.dart';
 import '../actions/get_movies.dart';
 import '../actions/get_user_data_with_token.dart';
 import '../actions/logout.dart';
@@ -17,11 +17,21 @@ Reducer<AppState> reducer = combineReducers<AppState>(<Reducer<AppState>>[
   TypedReducer<AppState, Logout>(logout),
   TypedReducer<AppState, GetMovies>(getMovies),
   TypedReducer<AppState, GetMoviesSuccessful>(getMoviesSuccessful),
-  TypedReducer<AppState, AddMovieFavorite>(addMovieFavorite),
+  TypedReducer<AppState, AddRemoveMovieFavorite>(addRemoveMovieFavorite),
 ]);
 
-AppState addMovieFavorite(AppState state, AddMovieFavorite action) {
-  return state.copyWith(user: state.user!.copyWith(favoriteMovies: action.favoriteMovies));
+AppState addRemoveMovieFavorite(AppState state, AddRemoveMovieFavorite action) {
+  if (state.user!.favoriteMovies.contains(action.movie)) {
+    final List<AppMovie> newMovies =
+        state.user!.favoriteMovies.where((AppMovie movie) => movie.id != action.movie.id).toList();
+
+    return state.copyWith(
+      user: state.user!.copyWith(favoriteMovies: newMovies),
+    );
+  }
+  return state.copyWith(
+    user: state.user!.copyWith(favoriteMovies: <AppMovie>[...state.user!.favoriteMovies, action.movie]),
+  );
 }
 
 AppState signInWithFacebookSuccessful(AppState state, SignInWithFacebookSuccessful action) {
@@ -37,6 +47,9 @@ AppState logout(AppState state, Logout action) {
 }
 
 AppState pressBottomBarOption(AppState state, PressBottomBarOption action) {
+  if (state.bottomBarSelectedIndex == action.index) {
+    return state;
+  }
   return state.copyWith(bottomBarSelectedIndex: action.index);
 }
 

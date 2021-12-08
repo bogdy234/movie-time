@@ -17,7 +17,7 @@ void main() {
 
   final Store<AppState> store = Store<AppState>(
     reducer,
-    initialState: AppState(),
+    initialState: const AppState(),
     middleware: <Middleware<AppState>>[
       (Store<AppState> store, dynamic action, NextDispatcher next) {
         next(action);
@@ -27,9 +27,11 @@ void main() {
     ],
   );
 
-  runApp(MyApp(
-    store: store,
-  ));
+  runApp(
+    MyApp(
+      store: store,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

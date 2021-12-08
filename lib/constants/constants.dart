@@ -7,4 +7,10 @@ class Constants {
   static const String DISCOVER = 'Discover';
   static const String LOGOUT = 'Logout';
   static const String ADD_FAVORITES = 'Add to Favorites';
+  static const String REMOVE_FAVORITES = 'Remove from Favorites';
+  static const String UNRATED = 'Unrated';
+  static const String UNKNOWN = 'Unkown';
+  static const String NO_SUMMARY = 'This movie has no summary.';
+  static const String FAVORITE_MOVIES = 'Favorite Movies';
+  static const double SPACING_TILES = 16.0;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:movie_time/presentation/cover_image_list_tile.dart';
 import 'package:redux/redux.dart';
 
 import '../actions/get_movies.dart';
@@ -49,53 +50,51 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(Constants.DISCOVER),
+        title: const Text(
+          Constants.DISCOVER,
+        ),
         centerTitle: true,
         actions: <Widget>[
-          IsLoadingContainer(builder: (BuildContext context, bool isLoading) {
-            return isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : const SizedBox.shrink();
-          })
+          IsLoadingContainer(
+            builder: (BuildContext context, bool isLoading) {
+              return isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : const SizedBox.shrink();
+            },
+          )
         ],
         automaticallyImplyLeading: false,
       ),
       body: MoviesContainer(
         builder: (BuildContext context, List<AppMovie> movies) {
-          return Padding(
-            padding: const EdgeInsets.only(
-              top: 16.0,
+          return GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.75,
             ),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-              ),
-              controller: _scrollController,
-              itemCount: movies.length,
-              itemBuilder: (BuildContext context, int index) {
-                final String coverImageUrl = movies[index].coverImageUrl;
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push<void>(
-                      context,
-                      MaterialPageRoute<MoviePage>(
-                        builder: (BuildContext context) => MoviePage(
-                          movie: movies[index],
-                        ),
+            controller: _scrollController,
+            itemCount: movies.length,
+            itemBuilder: (BuildContext context, int index) {
+              final String coverImageUrl = movies[index].coverImageUrl;
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push<void>(
+                    context,
+                    MaterialPageRoute<MoviePage>(
+                      builder: (BuildContext context) => MoviePage(
+                        movie: movies[index],
                       ),
-                    );
-                  },
-                  child: ListTile(
-                    title: Image.network(
-                      coverImageUrl,
                     ),
-                  ),
-                );
-              },
-            ),
+                  );
+                },
+                child: CoverImageListTile(
+                  coverImageUrl: coverImageUrl,
+                  movieTitle: movies[index].title,
+                ),
+              );
+            },
           );
         },
       ),

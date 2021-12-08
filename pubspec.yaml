@@ -6,7 +6,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.14.0 <3.0.0"
 dependencies:
   flutter:
     sdk: flutter
@@ -18,6 +18,13 @@ dependencies:
   firebase_auth: ^3.2.0
   flutter_facebook_auth: ^3.5.6
   cloud_firestore: ^3.1.0
+  freezed_annotation: ^1.0.0
+  json_annotation: ^4.4.0
+
+linter:
+  exclude:
+    - lib/**.freezed.dart
+
 
 dependency_overrides:
   rxdart: ^0.27.3
@@ -25,7 +32,9 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
+  freezed: ^1.0.2
+  build_runner: ^2.1.5
 
 flutter:
   uses-material-design: true

@@ -5,14 +5,12 @@ import 'package:http/http.dart';
 import '../models/app_movie.dart';
 
 class MoviesApi {
-  Future<List<AppMovie>> getMovies(int page) async {
-    final Uri uri = Uri(scheme: 'https', host: 'yts.mx', pathSegments: <String>[
-      'api',
-      'v2',
-      'list_movies.json'
-    ], queryParameters: <String, String>{
-      'page': '$page',
-    });
+  Future<List<AppMovie>> getMovies(int page, {String searchParam = ''}) async {
+    final Uri uri = Uri(
+        scheme: 'https',
+        host: 'yts.mx',
+        pathSegments: <String>['api', 'v2', 'list_movies.json'],
+        queryParameters: <String, String>{'page': '$page', 'query_term': searchParam != '' ? searchParam : '0'});
 
     final Response response = await get(uri);
     if (response.statusCode != 200) {
@@ -29,7 +27,7 @@ class MoviesApi {
       final int year = movie['year'] as int;
       final double rating = (movie['rating'] as num).toDouble();
       final String summary = movie['summary'] as String;
-      final String coverImageUrl = movie['medium_cover_image'] as String;
+      final String? coverImageUrl = movie['medium_cover_image'] as String?;
 
       final AppMovie appMovie = AppMovie(
         id: id,
@@ -37,7 +35,7 @@ class MoviesApi {
         year: year,
         rating: rating,
         summary: summary,
-        coverImageUrl: coverImageUrl,
+        coverImageUrl: coverImageUrl ?? 'https://www.kindpng.com/picc/m/740-7403121_generic-movie-hd-png-download.png',
       );
       return appMovie;
     }).toList();
